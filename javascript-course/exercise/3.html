@@ -8,7 +8,68 @@
 </head>
 
 <body>
-  <script></script>
+  <script>
+    let farm = [
+      {
+        id: 1,
+        name: '豬',
+        en: 'pig',
+        male: 11,
+        female: 5,
+        isLarge: false,
+      },
+      {
+        id: 2,
+        name: '虎',
+        en: 'tiger',
+        male: 3,
+        female: 10,
+        isLarge: true,
+      },
+      {
+        id: 3,
+        name: '馬',
+        en: 'horse',
+        male: 9,
+        female: 8,
+        isLarge: true,
+      },
+      {
+        id: 4,
+        name: '羊',
+        en: 'sheep',
+        male: 22,
+        female: 34,
+        isLarge: false,
+      },
+      {
+        id: 5,
+        name: '兔',
+        en: 'rabbit',
+        male: 37,
+        female: 4,
+        isLarge: false,
+      },
+    ]
+    let pig = farm[0];
+    let tiger = farm[1];
+    let horse = farm[2];
+    let sheep = farm[3];
+    let rabbit = farm[4];
+
+    const pigField = (pig.isLarge || pig.male + pig.female > 20) ? '大' : '小';
+    const tigerField = (tiger.isLarge || tiger.male + tiger.female > 20) ? '大' : '小';
+    const horseField = (horse.isLarge || horse.male + horse.female > 20) ? '大' : '小';
+    const sheepField = (sheep.isLarge || sheep.male + sheep.female > 20) ? '大' : '小';
+    const rabbitField = (rabbit.isLarge || rabbit.male + rabbit.female > 20) ? '大' : '小';
+
+    console.log(`動物${pig.name}, 需要${pigField}場地`);
+    console.log(`動物${tiger.name}, 需要${tigerField}場地`);
+    console.log(`動物${horse.name}, 需要${horseField}場地`);
+    console.log(`動物${sheep.name}, 需要${sheepField}場地`);
+    console.log(`動物${rabbit.name}, 需要${rabbitField}場地`);
+
+  </script>
 </body>
 
 </html>
