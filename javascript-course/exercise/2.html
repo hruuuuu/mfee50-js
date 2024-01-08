@@ -8,7 +8,62 @@
 </head>
 
 <body>
-  <script></script>
+  <script>
+    let farm = [
+      {
+        id: 1,
+        name: '豬',
+        en: 'pig',
+        male: 11,
+        female: 5,
+        isLarge: false,
+      },
+      {
+        id: 2,
+        name: '虎',
+        en: 'tiger',
+        male: 3,
+        female: 10,
+        isLarge: true,
+      },
+      {
+        id: 3,
+        name: '馬',
+        en: 'horse',
+        male: 9,
+        female: 8,
+        isLarge: true,
+      },
+      {
+        id: 4,
+        name: '羊',
+        en: 'sheep',
+        male: 22,
+        female: 34,
+        isLarge: false,
+      },
+      {
+        id: 5,
+        name: '兔',
+        en: 'rabbit',
+        male: 37,
+        female: 4,
+        isLarge: false,
+      },
+    ]
+    let length = farm.length; // 5
+    let myAnimal = farm[length - 1];
+    // console.log(myAnimal);
+
+    let friendsAnimal = { ...myAnimal };
+
+    friendsAnimal.male = 2;
+    friendsAnimal.female = 0;
+
+    console.log(myAnimal);
+    console.log(friendsAnimal);
+
+  </script>
 </body>
 
 </html>

@@ -9,6 +9,7 @@
 
 <body>
   <script>
+    /*
     // 基本型別
     let a = 'a';
     console.log(a);
@@ -48,6 +49,55 @@
     console.log(text[0]);
     console.log(text.length);
     console.log(text[text.length - 1]);
+    */
+
+    let x = 1;
+    let y = x;
+    console.log('x', x);
+    console.log('y', y);
+
+    y = 2;
+    console.log('x', x);
+    console.log('y', y);
+
+    let car1 = {
+      color: 'red',
+    }
+
+    console.log(car1);
+    let car2 = car1;
+
+    // console.log(car2.color);
+    // car2.color = 'blue';
+
+    console.log('car1', car1.color);
+    console.log('car2', car2.color);
+
+    car2 = {
+      color: 'green'
+    }
+
+    console.log('car1', car1.color);
+    console.log('car2', car2.color);
+
+    let car3 = { ...car1 };
+    car3.color = 'black';
+    console.log('car1', car1.color);
+    console.log('car3', car3.color);
+
+    let car4 = {
+      color: 'white',
+      owner: {
+        name: 'Allie'
+      }
+    }
+
+    let car5 = { ...car4 };
+    car5.color = 'yellow';
+    car5.owner.name = 'Tom';
+
+    console.log(car4);
+    console.log(car5);
 
   </script>
 </body>
