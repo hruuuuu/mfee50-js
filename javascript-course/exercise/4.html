@@ -8,7 +8,85 @@
 </head>
 
 <body>
-  <script></script>
+  <script>
+    let farm = [
+      {
+        id: 1,
+        name: '豬',
+        en: 'pig',
+        male: 11,
+        female: 5,
+        isLarge: false,
+      },
+      {
+        id: 2,
+        name: '虎',
+        en: 'tiger',
+        male: 3,
+        female: 10,
+        isLarge: true,
+      },
+      {
+        id: 3,
+        name: '馬',
+        en: 'horse',
+        male: 9,
+        female: 8,
+        isLarge: true,
+      },
+      {
+        id: 4,
+        name: '羊',
+        en: 'sheep',
+        male: 22,
+        female: 34,
+        isLarge: false,
+      },
+      {
+        id: 5,
+        name: '兔',
+        en: 'rabbit',
+        male: 37,
+        female: 4,
+        isLarge: false,
+      },
+    ]
+    let pig = { ...farm[0] };
+    let tiger = { ...farm[1] };
+    let horse = { ...farm[2] };
+    let sheep = { ...farm[3] };
+    let rabbit = { ...farm[4] };
+
+    if (pig.id % 2 === 0) {
+      pig.area = 'B';
+    } else {
+      pig.area = 'A';
+    }
+    if (tiger.id % 2 === 0) {
+      tiger.area = 'B';
+    } else {
+      tiger.area = 'A';
+    }
+    if (horse.id % 2 === 0) {
+      horse.area = 'B';
+    } else {
+      horse.area = 'A';
+    }
+    if (sheep.id % 2 === 0) {
+      sheep.area = 'B';
+    } else {
+      sheep.area = 'A';
+    }
+    if (rabbit.id % 2 === 0) {
+      rabbit.area = 'B';
+    } else {
+      rabbit.area = 'A';
+    }
+
+    let newFarm = [{ ...pig }, { ...tiger }, { ...horse }, { ...sheep }, { ...rabbit }];
+    console.log(newFarm);
+    console.log(farm);
+  </script>
 </body>
 
 </html>
