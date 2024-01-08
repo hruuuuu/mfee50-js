@@ -48,10 +48,14 @@
     badExample = 'c'; // 全域變數
     function print() {
       var b = 'b'; // 函數作用域 function
+      var text = 'a';
       if (true) {
-        let a = 'a'; // 區塊作用域 block
+        let text = 'a'; // 區塊作用域 block
         // console.log('區塊內 函數內', a);
         // console.log('區塊內 函數內', b);
+        var text = 'b';
+      }else{
+        let text = 'apple';
       }
       // console.log('區塊外 函數內', a);
     }

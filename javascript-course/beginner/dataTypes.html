@@ -8,7 +8,48 @@
 </head>
 
 <body>
-  <script></script>
+  <script>
+    // 基本型別
+    let a = 'a';
+    console.log(a);
+    let b = 1;
+    console.log(b);
+    let c = true;
+    console.log(c);
+    let d;
+    console.log(d);
+    let e = null;
+    console.log(e);
+
+    // 物件型別
+    let info = {
+      name: 'Allie',
+      color: 'white',
+      greeting: function () {
+        console.log('hi');
+      }
+    }
+    console.log(info);
+    console.log(info.name); // 屬性 attribute
+    console.log(info['color']);
+
+    info.greeting(); // 方法 method
+
+    let colorKey = 'color';
+    console.log(info[colorKey]); // 變數為 key
+
+    info.color = 'blue';
+    console.log(info.color);
+
+    let array = ['apple', 0, false, undefined, null, { name: 'Allie' }];
+    console.log(array);
+
+    let text = '肚子好餓喔！ 想吃午餐～';
+    console.log(text[0]);
+    console.log(text.length);
+    console.log(text[text.length - 1]);
+
+  </script>
 </body>
 
 </html>
