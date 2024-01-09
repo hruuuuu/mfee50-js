@@ -34,6 +34,7 @@
     print(0, 1, 2, 3, 4, 5);
     */
 
+
     function wakeUp(callback) {
       console.log('起床');
       callback();
@@ -48,9 +49,8 @@
     }
 
     wakeUp(washFace);
-    wakeUp(brushTeeth);
 
-
+    /*
     function add(a, b) {
       let result = 0;
       result = a + b;
@@ -59,6 +59,33 @@
 
     let addResult = add(3, 5);
     console.log(addResult);
+    */
+
+    /*
+    let greeting = function () {
+      console.log('hi');
+    }
+    */
+
+    /*
+    // 立即執行函數
+    (function () {
+      console.log('hi');
+    })();
+
+
+    (() => {
+      console.log('hello');
+    })();
+
+
+    console.log(((a = 1, b = 1) => {
+      return a + b;
+    })(3, 5));
+    */
+
+
+
 
 
 

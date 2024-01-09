@@ -10,11 +10,11 @@
 <body>
   <script>
 
-    function subtractCallback(a, b) {
+    function subtract(a, b) {
       return a - b;
     }
 
-    function sumCallback(numbers) {
+    function sum(numbers) {
       let result = 0;
       for (number of numbers) {
         result += number;
@@ -22,7 +22,7 @@
       return result;
     }
 
-    function calculator(type, callback, ...numbers) {
+    function calculator(type, ...numbers) {
       let a = numbers[0];
       let b = numbers[1];
       switch (type) {
@@ -31,7 +31,7 @@
         default:
           return a + b;
         case 'subtract':
-          return callback(a, b);
+          return subtract(a, b);
         case 'multiply':
           return a * b;
         case 'divide':
@@ -41,11 +41,12 @@
         case 'power':
           return a ** b;
         case 'sum':
-          return sumCallback(numbers);
+          return sum(numbers);
       }
     }
-    let sumResult = calculator('sum', subtractCallback, 5, 17, 6, 22, 1, 2, 3);
-    let subtractResult = calculator('subtract', subtractCallback, 5, 17, 6, 22, 1, 2, 3);
+    let sumResult = calculator('sum', 5, 17, 6, 22, 1, 2, 3);
+    let subtractResult = calculator('subtract', 5, 17, 6, 22, 1, 2, 3);
+
     console.log(sumResult);
     console.log(subtractResult);
   </script>
