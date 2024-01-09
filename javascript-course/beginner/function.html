@@ -26,11 +26,39 @@
     }
     */
 
+    /*
     function print(...numbers) {
       console.log(numbers);
     }
 
     print(0, 1, 2, 3, 4, 5);
+    */
+
+    function wakeUp(callback) {
+      console.log('起床');
+      callback();
+    }
+
+    function washFace() {
+      console.log('洗臉');
+    }
+
+    function brushTeeth() {
+      console.log('刷牙');
+    }
+
+    wakeUp(washFace);
+    wakeUp(brushTeeth);
+
+
+    function add(a, b) {
+      let result = 0;
+      result = a + b;
+      return result;
+    }
+
+    let addResult = add(3, 5);
+    console.log(addResult);
 
 
 

@@ -8,7 +8,47 @@
 </head>
 
 <body>
-  <script></script>
+  <script>
+
+    function subtractCallback(a, b) {
+      return a - b;
+    }
+
+    function sumCallback(numbers) {
+      let result = 0;
+      for (number of numbers) {
+        result += number;
+      }
+      return result;
+    }
+
+    function calculator(type, callback, ...numbers) {
+      let a = numbers[0];
+      let b = numbers[1];
+      switch (type) {
+        case 'add':
+        case '+':
+        default:
+          return a + b;
+        case 'subtract':
+          return callback(a, b);
+        case 'multiply':
+          return a * b;
+        case 'divide':
+          return a / b;
+        case 'mod':
+          return a % b;
+        case 'power':
+          return a ** b;
+        case 'sum':
+          return sumCallback(numbers);
+      }
+    }
+    let sumResult = calculator('sum', subtractCallback, 5, 17, 6, 22, 1, 2, 3);
+    let subtractResult = calculator('subtract', subtractCallback, 5, 17, 6, 22, 1, 2, 3);
+    console.log(sumResult);
+    console.log(subtractResult);
+  </script>
 </body>
 
 </html>
