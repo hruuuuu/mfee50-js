@@ -8,7 +8,75 @@
 </head>
 
 <body>
-  <script></script>
+  <script>
+    let greeting = 'hi';
+    console.log(greeting);
+
+    let greetingObj = new String('hi');
+    console.log(greetingObj);
+
+    let fruits = ['apple', 'banana', 'orange', 'lemon'];
+    // let newFruits = [...fruits, 'peach'];
+    let fruits2 = ['watermelon', 'peach', 'grape'];
+
+    /*
+    console.log(fruits.push('peach')); // 5
+    // ['apple', 'banana', 'orange', 'lemon', 'peach']
+    */
+
+    /*
+    console.log(fruits.pop()); // lemon
+    // ['apple', 'banana', 'orange']
+    */
+
+    /*
+    console.log(fruits.shift()); // apple
+    // ['banana', 'orange', 'lemon']
+    */
+
+    /*
+    console.log(fruits.unshift('peach')); // 5
+    // ['peach', 'apple', 'banana', 'orange', 'lemon']
+    */
+
+    /*
+    console.log(fruits.slice(2, 3)); // ['orange']
+    console.log(fruits.slice(1)); // ['banana', 'orange', 'lemon']
+    console.log(fruits.slice(-2)); // ['orange', 'lemon']
+    */
+
+    /*
+    console.log(fruits.splice(1, 2, 'peach')); // ['banana', 'orange']
+    // ['apple', 'peach', 'lemon']
+    */
+
+    /*
+    console.log(fruits.concat(fruits2)); // ['apple', 'banana', 'orange', 'lemon', 'peach', 'grape']
+    */
+
+    /*
+    console.log(fruits2.sort()); // ['grape', 'peach', 'watermelon']
+    */
+
+    /*
+    console.log(fruits.reverse()); // ['lemon', 'orange', 'banana', 'apple']
+    */
+
+    /*
+    console.log(fruits.indexOf('lemon')); // 3
+    console.log(fruits.indexOf('grape')); // -1
+    */
+
+    console.log(fruits.includes('banana')); // true
+    console.log(fruits.includes('grape')); // false
+
+    // v: value (item), i: index, arr: array 本身
+    fruits.forEach(function (v, i, arr) {
+      console.log(`水果 ${v}, index: ${i}, 在 ${arr} 裡`);
+    })
+
+    console.log(fruits);
+  </script>
 </body>
 
 </html>

@@ -10,12 +10,12 @@
 <body>
   <script>
     // 表達式
-    function subtract(a, b) {
+    let subtract = function (a, b) {
       return a - b;
     }
 
     // 箭頭函數
-    function sum(numbers) {
+    let sum = (numbers) => {
       let result = 0;
       for (number of numbers) {
         result += number;
@@ -24,7 +24,7 @@
     }
 
     // IIFE
-    function calculator(type, ...numbers) {
+    let sumResult = (function (type, ...numbers) {
       let a = numbers[0];
       let b = numbers[1];
       switch (type) {
@@ -45,8 +45,8 @@
         case 'sum':
           return sum(numbers);
       }
-    }
-    // ('sum', 5, 17, 6, 22, 1, 2, 3)
+    })('sum', 5, 17, 6, 22, 1, 2, 3);
+    console.log(sumResult);
 
 
   </script>
