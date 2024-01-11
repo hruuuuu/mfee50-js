@@ -9,6 +9,69 @@
 
 <body>
   <script>
+    let farm = [
+      {
+        id: 1,
+        name: '豬',
+        en: 'pig',
+        male: 11,
+        female: 5,
+        isLarge: false,
+      },
+      {
+        id: 2,
+        name: '虎',
+        en: 'tiger',
+        male: 3,
+        female: 10,
+        isLarge: true,
+      },
+      {
+        id: 3,
+        name: '馬',
+        en: 'horse',
+        male: 9,
+        female: 8,
+        isLarge: true,
+      },
+      {
+        id: 4,
+        name: '羊',
+        en: 'sheep',
+        male: 22,
+        female: 34,
+        isLarge: false,
+      },
+      {
+        id: 5,
+        name: '兔',
+        en: 'rabbit',
+        male: 37,
+        female: 4,
+        isLarge: false,
+      },
+    ]
+
+    // {
+    //   name: '豬',
+    //   count: 公+母
+    // }
+
+    let createAnimal = (animal) => {
+      return {
+        name: animal.name,
+        count: animal.male + animal.female
+      }
+    }
+
+    let newAnimals = [];
+    for (animal of farm) {
+      let newAnimal = createAnimal(animal);
+      // console.log(newAnimal);
+      newAnimals.push(newAnimal)
+    }
+    console.log(newAnimals);
+
   </script>
 </body>
 
