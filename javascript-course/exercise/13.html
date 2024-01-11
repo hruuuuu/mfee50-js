@@ -9,6 +9,29 @@
 
 <body>
   <script>
+    // 2024/01/01 00:00
+
+    let date = new Date();
+
+    let formatDate = (date) => {
+      let year = date.getFullYear();
+      let month = date.getMonth() + 1;
+      let day = date.getDate();
+      let hours = date.getHours();
+      let minutes = date.getMinutes();
+
+      let newMonth = month < 10 ? `0${month}` : month;
+      let newDay = day < 10 ? `0${day}` : day;
+      let newHours = hours < 10 ? `0${hours}` : hours;
+      let newMinutes = minutes < 10 ? `0${minutes}` : minutes;
+
+      let dateString = `${year}/${newMonth}/${newDay} ${newHours}:${newMinutes}`
+      return dateString;
+    }
+
+    console.log(formatDate(date));
+
+    // console.log(dateString);
   </script>
 </body>
 

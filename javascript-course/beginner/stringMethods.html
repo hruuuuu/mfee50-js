@@ -8,7 +8,41 @@
 </head>
 
 <body>
-  <script></script>
+  <script>
+    let greeting = 'Hello world!';
+
+    console.log(greeting.toUpperCase());
+
+    console.log(greeting.toLowerCase());
+
+    let greetingTrim = '   Hello world!     ';
+
+    console.log(greetingTrim);
+    console.log(greetingTrim.trim());
+
+    console.log(greeting.charAt(7)); // o
+
+    console.log(greeting.replace('world', 'Taiwan'));
+
+    let greetingReplace = 'Hello world world!';
+
+    console.log(greetingReplace.replace('world', 'Taiwan')); // Hello Taiwan world!
+
+    console.log(greetingReplace.replaceAll('world', 'Taiwan')); // Hello Taiwan Taiwan!
+
+    console.log(greeting.slice(0, 5)); // Hello
+    console.log(greeting.slice(6)); // world!
+    console.log(greeting.slice(-1)); // !
+
+    console.log(greeting.substring(6, 11)); // world
+    console.log(greeting.substring(11, 6)); // world
+    console.log(greeting.substring(-1)); // Hello world!
+
+    console.log(greeting.indexOf('o')); // 4
+    console.log(greeting.indexOf('a')); // -1
+
+
+  </script>
 </body>
 
 </html>

@@ -9,6 +9,12 @@
 
 <body>
   <script>
+    // Chicken nuggets
+
+    // kebab-case
+    // camelCase
+    // ChickenNuggets
+    // chicken_nuggets
     let food = [
       "   chicken-nuggets ",
       " beef-stew   ",
@@ -21,6 +27,18 @@
       "  garlic-bread ",
       "  honey-mustard-chicken "
     ];
+
+    let newFood = [];
+    food.forEach(function (v, i, arr) {
+      let trimFood = v.trim(); // 移除空白
+      let replaceFood = trimFood.replaceAll('-', ' '); // 把 - 用空白取代
+      let upperCaseFood = replaceFood.charAt(0).toUpperCase(); // 第一個字變大寫
+      let remainFood = replaceFood.slice(1); // 剩下的字
+      let foodName = upperCaseFood + remainFood; // 組合第一個字大寫 + 剩下的字
+      newFood.push(foodName);
+
+    })
+    console.log(newFood);
   </script>
 </body>
 

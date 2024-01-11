@@ -9,6 +9,12 @@
 
 <body>
   <script>
+    let createAnimal = (a) => {
+      return {
+        name: a.name,
+        count: a.male + a.female
+      }
+    }
     let farm = [
       {
         id: 1,
@@ -57,20 +63,30 @@
     //   count: 公+母
     // }
 
-    let createAnimal = (animal) => {
-      return {
-        name: animal.name,
-        count: animal.male + animal.female
-      }
-    }
-
     let newAnimals = [];
     for (animal of farm) {
       let newAnimal = createAnimal(animal);
       // console.log(newAnimal);
       newAnimals.push(newAnimal)
     }
+
+    newAnimals.splice(2, 1, { name: '牛', count: 11 }, { name: '驢', count: 7 }, { name: '雞', count: 26 }
+    )
+
+    let newAnimals1 = newAnimals.slice(0, 2);
+    let newAnimals2 = newAnimals.slice(5);
+    let allAnimals = newAnimals1.concat(newAnimals2);
+
     console.log(newAnimals);
+    console.log(newAnimals1);
+    console.log(newAnimals2);
+    console.log(allAnimals);
+
+    allAnimals.forEach(function (v, i, arr) {
+      console.log(`動物${v.name}, 數量${v.count}`);
+    })
+
+
 
   </script>
 </body>

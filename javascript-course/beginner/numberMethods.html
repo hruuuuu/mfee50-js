@@ -8,7 +8,56 @@
 </head>
 
 <body>
-  <script></script>
+  <script>
+    /*
+    console.log(Number(0));
+    console.log(Number('0')); // 0
+    console.log(Number('0apple')); // NaN
+    console.log(Number(0.12345));
+    console.log(Number('')); // 0
+    console.log(Number(' ')); // 0
+    console.log(Number(true)); // 1
+    console.log(Number(false)); // 0
+
+    console.log(Number.isNaN(NaN)); // true
+    console.log(Number.isNaN('0apple')); // false
+    console.log(isNaN('0apple')); // true
+    console.log(Number.isInteger(42)); // true
+    console.log(Number.isInteger(42.2)); // false
+    console.log(Number.parseFloat(42.2)); // 42.2
+    console.log(Number.parseFloat(42)); // 42
+    console.log(Number.parseInt(42)); // 42
+    console.log(Number.parseInt(42.2)); // 42
+    console.log(Number.parseInt('42')); // 42
+
+    console.log(Math.round(3.574)); // 4 四捨五入
+    console.log(Math.floor(3.574)); // 3 無條件捨去
+    console.log(Math.ceil(3.574)); // 4 無條件進位
+    console.log(Math.random());
+    console.log(Math.max(1, 2)); // 2
+    console.log(Math.min(1, 2)); // 1
+    console.log(Math.PI); // 3.141592653589793
+    console.log(Math.E); // 2.718281828459045
+    */
+
+    let now = new Date();
+    console.log(now);
+
+    let date = new Date('2024-01-01');
+    console.log(date);
+
+    console.log(now.getFullYear()); // 2024
+    console.log(now.getMonth()); // 0 + 1
+    console.log(now.getDate()); // 11
+    console.log(now.getHours()); // 13
+    console.log(now.getMinutes()); // 42
+    console.log(now.getSeconds()); // 32
+
+    // 2024/01/11 00:00:00
+
+    console.log(now.toISOString()); // 2024-01-11T05:44:08.268Z
+
+  </script>
 </body>
 
 </html>
