@@ -9,6 +9,50 @@
 
 <body>
   <script>
+    // chickenNuggets
+    let food = [
+      "   chicken-nuggets ",
+      " beef-stew   ",
+      "apple-pie   ",
+      "  fish-tacos",
+      "  cheese-burger ",
+      "  spaghetti-bolognese ",
+      "   bacon-lettuce-tomato  ",
+      "   egg-salad  ",
+      "  garlic-bread ",
+      "  honey-mustard-chicken "
+    ];
+
+    let newFood = [];
+    food.forEach(function (v, i, arr) {
+      let trimFood = v.trim(); // 移除空白
+      let replaceFood = trimFood.replaceAll('-', ' '); // 把 - 用空白取代
+      let upperCaseFood = replaceFood.charAt(0).toUpperCase(); // 第一個字變大寫
+      let remainFood = replaceFood.slice(1); // 剩下的字
+      let foodName = upperCaseFood + remainFood; // 組合第一個字大寫 + 剩下的字
+      newFood.push(foodName);
+
+    })
+    console.log(newFood);
+
+    // Chicken nuggets
+    // chickenNuggets
+    // 其他字也要變首字大寫 該怎麼寫判斷？提示：v.split(' ') 陣列去做迴圈/迭代
+    let camelCaseFood = [];
+    newFood.forEach(function (v, i, arr) {
+      let splitFood = v.split(' ');
+      let firstFood = splitFood[0].toLowerCase();
+      let secondFoodFirstAlphabet = splitFood[1].charAt(0).toUpperCase(); // 第一個字變大寫
+      let secondFoodRemainWord = splitFood[1].slice(1); // 剩下的字
+      let secondFood = secondFoodFirstAlphabet + secondFoodRemainWord; // 組合第一個字大寫 + 剩下的字
+      let foodName = [firstFood, secondFood].join('');
+      camelCaseFood.push(foodName);
+    })
+
+    console.log(camelCaseFood);
+
+
+
   </script>
 </body>
 

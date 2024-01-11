@@ -31,10 +31,28 @@
 
     // .csv 逗號分隔檔
 
-    let string = 'Hi,Hello,world,Taiwan!';
+    let string = 'Hi,,Hello,world,Taiwan!';
     console.log(string.split(','));
     let array = ['Hi', 'Hello', 'world', 'Taiwan!'];
     console.log(array.join(', '));
+
+    let info = {
+      name: "Allie",
+      color: "white",
+    }
+
+    console.log(JSON.stringify(info));
+
+    let JSONString = '{ "name": "Allie", "color": "white" }';
+
+    console.log(JSON.parse(JSONString));
+    console.log(JSON.parse(JSON.stringify(info)));
+
+    console.log(Object.keys(info)); // ['name', 'color']
+    console.log(Object.values(info)); // ['Allie', 'white']
+    console.log(Object.entries(info)); // [["name","Allie"],["color","white"]]
+    console.log(Object.fromEntries(Object.entries(info)));
+
 
   </script>
 </body>

@@ -9,6 +9,85 @@
 
 <body>
   <script>
+    let farm = [
+      {
+        id: 1,
+        name: '豬',
+        en: 'pig',
+        male: 11,
+        female: 5,
+        isLarge: false,
+      },
+      {
+        id: 2,
+        name: '虎',
+        en: 'tiger',
+        male: 3,
+        female: 10,
+        isLarge: true,
+      },
+      {
+        id: 3,
+        name: '馬',
+        en: 'horse',
+        male: 9,
+        female: 8,
+        isLarge: true,
+      },
+      {
+        id: 4,
+        name: '羊',
+        en: 'sheep',
+        male: 22,
+        female: 34,
+        isLarge: false,
+      },
+      {
+        id: 5,
+        name: '兔',
+        en: 'rabbit',
+        male: 37,
+        female: 4,
+        isLarge: false,
+      },
+    ]
+
+    // farmInfo = {
+    //   pig: {
+    //     count: 公 + 母,
+    //     groupSize: 大 / 中 / 小,
+    //   },
+    //   total: 所有動物的數量,
+    //   maleAverage: 所有公的動物數量平均
+    // };
+
+    let farmInfo = {};
+    let totalValue = 0;
+    let maleValue = 0;
+
+    for (let i = 0; i < farm.length; i++) {
+      if (i === 0) {
+        continue;
+      }
+      let animal = { ...farm[i] };
+      let key = animal.en;
+      let countValue = animal.male + animal.female;
+      let groupSizeValue = '';
+      if (countValue >= 50) {
+        groupSizeValue = '大';
+      } else if (countValue < 50 && countValue > 15) {
+        groupSizeValue = '中';
+      } else {
+        groupSizeValue = '小';
+      }
+      farmInfo[key] = { count: countValue, groupSize: groupSizeValue }
+      // total = total + countValue;
+      totalValue += countValue;
+      maleValue += animal.male;
+    }
+    farmInfo.total = totalValue;
+    farmInfo.maleAverage = maleValue / farm.length;
+    console.log(farmInfo);
   </script>
 </body>
 

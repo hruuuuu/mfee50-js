@@ -8,7 +8,32 @@
 </head>
 
 <body>
-  <script></script>
+  <script>
+    /*
+    let fruits = ['apple', 'banana', 'orange', 'lemon'];
+
+    // let [apple, banana, orange, lemon] = ['apple', 'banana', 'orange', 'lemon'];
+    let [, banana, peach, orange, lemon] = fruits;
+
+    console.log(orange);
+    console.log(lemon);
+    // console.log(apple);
+    console.log(banana);
+    */
+
+    let fruitsObj = {
+      apple: '蘋果',
+      nanana: '香蕉',
+      orange: '橘子',
+      lemon: '檸檬'
+    }
+
+    let { apple, nanana: banana, orange, lemon } = fruitsObj;
+
+    console.log(banana);
+
+
+  </script>
 </body>
 
 </html>
