@@ -1,14 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>瀏覽器物件模型 & 文件物件模型 BOM & DOM</title>
+    <style>
+      .image {
+        width: 100%;
+      }
+    </style>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>瀏覽器物件模型 & 文件物件模型 BOM & DOM</title>
-</head>
+  <body>
+    <div class="container"></div>
+    <div id="content">
+      <h1 class="title">蜂蜜大蒜烤雞腿食譜</h1>
+      <img class="image" src="..." alt="image" />
+      <p class="subtitle"></p>
+      <table id="table">
+        <thead>
+          <tr>
+            <th scope="col">編號</th>
+            <th scope="col">材料</th>
+            <th scope="col">量</th>
+            <th scope="col">單位</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>雞腿</td>
+            <td>4</td>
+            <td>個</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>蜂蜜</td>
+            <td>1/4</td>
+            <td>杯</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>大蒜</td>
+            <td>4</td>
+            <td>瓣</td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>橄欖油</td>
+            <td>2</td>
+            <td>湯匙</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="steps">
+        <ul class="items">
+          <li class="item"><strong>預熱烤箱：</strong><span>將烤箱預熱至 200 度攝氏（約 400 度華氏）。</span></li>
+          <li class="item"><strong>準備調味醬汁：</strong><span id="text">在一個小碗中，混合蜂蜜、切碎的大蒜和橄欖油。</span></li>
+          <li class="item"><strong>準備雞腿：</strong><span>在烤盤上放一張烤紙，將雞腿排放在烤盤上。使用刷子，將蜂蜜大蒜醬汁均勻塗抹在雞腿的表面。</span></li>
+          <li class="item"><strong>烤制雞腿：</strong><span>將雞腿放入預熱的烤箱中，烤約 40 至 45 分鐘，或直到雞腿表面呈金黃色且熟透。</span></li>
+          <li class="item"><strong>上桌享用：</strong><span>從烤箱中取出雞腿，稍微冷卻後即可上桌享用。</span></li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      /*
+    console.log(window);
+    alert('hi');
+    let input = prompt('你的名字？', 'Allie');
+    console.log(input);
+    */
 
-<body>
-  <script></script>
-</body>
+      setTimeout(() => {
+        console.log('延遲3秒的hi');
+      }, 3000);
 
+      let sec = 0;
+      let interval = setInterval(() => {
+        console.log(`${sec}秒過去了`);
+        if (sec >= 5) {
+          clearInterval(interval);
+        }
+        sec++;
+      }, 1000);
+    </script>
+  </body>
 </html>

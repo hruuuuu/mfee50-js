@@ -88,6 +88,35 @@
     farmInfo.total = totalValue;
     farmInfo.maleAverage = maleValue / farm.length;
     console.log(farmInfo);
+
+    let xAxis = [];
+    let data = [];
+
+    /*
+    xAxis = Object.keys(farmInfo);
+    console.log(xAxis);
+
+    Object.values(farmInfo).forEach((v, i, arr) => {
+      let value = v.count;
+      data.push(value);
+    })
+
+    console.log(data);
+    */
+
+    // total 跟 maleAverage
+    console.log(Object.entries(farmInfo));
+    Object.entries(farmInfo).forEach(([key, value]) => {
+      // console.log(key);
+      // console.log(value);
+
+      xAxis.push(key);
+      data.push(value.count);
+    })
+
+
+    // console.log(xAxis);
+    // console.log(data);
   </script>
 </body>
 

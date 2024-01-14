@@ -1,55 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>練習9</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>練習9</title>
-</head>
+  <body>
+    <script>
+      // 表達式
+      let subtract = function (a, b) {
+        return a - b;
+      };
 
-<body>
-  <script>
-    // 表達式
-    let subtract = function (a, b) {
-      return a - b;
-    }
+      // 箭頭函數
+      let sum = (numbers) => {
+        let result = 0;
+        for (let number of numbers) {
+          result += number;
+        }
+        return result;
+      };
 
-    // 箭頭函數
-    let sum = (numbers) => {
-      let result = 0;
-      for (number of numbers) {
-        result += number;
-      }
-      return result;
-    }
-
-    // IIFE
-    let sumResult = (function (type, ...numbers) {
-      let a = numbers[0];
-      let b = numbers[1];
-      switch (type) {
-        case 'add':
-        case '+':
-        default:
-          return a + b;
-        case 'subtract':
-          return subtract(a, b);
-        case 'multiply':
-          return a * b;
-        case 'divide':
-          return a / b;
-        case 'mod':
-          return a % b;
-        case 'power':
-          return a ** b;
-        case 'sum':
-          return sum(numbers);
-      }
-    })('sum', 5, 17, 6, 22, 1, 2, 3);
-    console.log(sumResult);
-
-
-  </script>
-</body>
-
+      // IIFE
+      let sumResult = (function (type, ...numbers) {
+        let a = numbers[0];
+        let b = numbers[1];
+        switch (type) {
+          case 'add':
+          case '+':
+          default:
+            return a + b;
+          case 'subtract':
+            return subtract(a, b);
+          case 'multiply':
+            return a * b;
+          case 'divide':
+            return a / b;
+          case 'mod':
+            return a % b;
+          case 'power':
+            return a ** b;
+          case 'sum':
+            return sum(numbers);
+        }
+      })('sum', 5, 17, 6, 22, 1, 2, 3);
+      console.log(sumResult);
+    </script>
+  </body>
 </html>
