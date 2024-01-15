@@ -13,9 +13,9 @@
 
   <body>
     <div class="container"></div>
-    <div id="content">
+    <div id="content" data-index="0">
       <h1 class="title">蜂蜜大蒜烤雞腿食譜</h1>
-      <img class="image" src="..." alt="image" />
+      <img class="image" src="" alt="image" />
       <p class="subtitle"></p>
       <table id="table">
         <thead>
@@ -55,22 +55,38 @@
       </table>
       <div class="steps">
         <ul class="items">
-          <li class="item"><strong>預熱烤箱：</strong><span>將烤箱預熱至 200 度攝氏（約 400 度華氏）。</span></li>
-          <li class="item"><strong>準備調味醬汁：</strong><span id="text">在一個小碗中，混合蜂蜜、切碎的大蒜和橄欖油。</span></li>
-          <li class="item"><strong>準備雞腿：</strong><span>在烤盤上放一張烤紙，將雞腿排放在烤盤上。使用刷子，將蜂蜜大蒜醬汁均勻塗抹在雞腿的表面。</span></li>
-          <li class="item"><strong>烤制雞腿：</strong><span>將雞腿放入預熱的烤箱中，烤約 40 至 45 分鐘，或直到雞腿表面呈金黃色且熟透。</span></li>
-          <li class="item"><strong>上桌享用：</strong><span>從烤箱中取出雞腿，稍微冷卻後即可上桌享用。</span></li>
+          <li class="item">
+            <strong>預熱烤箱：</strong>
+            <span>將烤箱預熱至 200 度攝氏（約 400 度華氏）。</span>
+          </li>
+          <li class="item">
+            <strong>準備調味醬汁：</strong>
+            <span id="text">在一個小碗中，混合蜂蜜、切碎的大蒜和橄欖油。</span>
+          </li>
+          <li class="item">
+            <strong>準備雞腿：</strong>
+            <span>在烤盤上放一張烤紙，將雞腿排放在烤盤上。使用刷子，將蜂蜜大蒜醬汁均勻塗抹在雞腿的表面。</span>
+          </li>
+          <li class="item">
+            <strong>烤制雞腿：</strong>
+            <span>將雞腿放入預熱的烤箱中，烤約 40 至 45 分鐘，或直到雞腿表面呈金黃色且熟透。</span>
+          </li>
+          <li class="item">
+            <strong>上桌享用：</strong>
+            <span>從烤箱中取出雞腿，稍微冷卻後即可上桌享用。</span>
+          </li>
         </ul>
       </div>
     </div>
     <script>
       /*
-    console.log(window);
-    alert('hi');
-    let input = prompt('你的名字？', 'Allie');
-    console.log(input);
-    */
+      console.log(window);
+      alert('hi');
+      let input = prompt('你的名字？', 'Allie');
+      console.log(input);
+      */
 
+      /*
       setTimeout(() => {
         console.log('延遲3秒的hi');
       }, 3000);
@@ -83,6 +99,80 @@
         }
         sec++;
       }, 1000);
+      */
+
+      /*
+      console.log(location);
+      // location.href = 'https://www.google.com';
+      console.log(navigator);
+      console.log(history);
+
+      // history.back();
+      // history.forward();
+      // history.go(-1);
+      */
+
+      /*
+      let info = {
+        name: 'Allie',
+      };
+      info.name
+      info['name']
+
+      let key = 'name';
+      info[key]
+      info.key // undefined
+      */
+
+      let tableEl = document.getElementById('table');
+      console.log(tableEl);
+      tableEl.style.backgroundColor = 'lightgoldenrodyellow';
+      // background-color css kebab-case
+
+      let thEls = document.getElementsByTagName('th');
+      console.log(thEls);
+      for (let th of thEls) {
+        th.style.color = 'cornflowerblue';
+      }
+
+      let titleEls = document.getElementsByClassName('title');
+      console.log(titleEls);
+      // titleEls[0].textContent = '<秘制>蜂蜜大蒜烤雞腿食譜';
+      titleEls[0].innerText = '<秘制>蜂蜜大蒜烤雞腿食譜';
+
+      let imageEl = document.querySelector('.image');
+      console.log(imageEl);
+      imageEl.src = 'https://cremechii.com/cdn/shop/files/Untitled_Artwork_768f9c90-1374-476e-85e9-a5eea06e646b_364x.png?v=1647076451';
+
+      let subtitleEl = document.querySelector('p');
+      console.log(subtitleEl);
+      subtitleEl.innerHTML = '這是一道<em>非常簡單</em>的料理';
+
+      let strongEls = document.querySelectorAll('strong');
+      console.log(strongEls);
+      for (let i = 0; i < strongEls.length; i++) {
+        strongEls[i].style.fontSize = '20px';
+      }
+
+      let contentEl = document.querySelector('#content');
+      console.log(contentEl);
+      contentEl.dataset.index = '1';
+
+      let textEl = document.querySelector('#text');
+      textEl.parentNode.parentNode.children[3].querySelector('strong').style.textDecoration = 'underline';
+      console.log(textEl.parentNode.parentNode.firstElementChild);
+      console.log(textEl.parentNode.parentNode.lastElementChild);
+      // console.log(textEl.previousElementSibling);
+      console.log(textEl.parentNode.parentNode.firstElementChild.nextElementSibling);
+
+      let buttonEl = document.createElement('button');
+      buttonEl.style.background = 'lightblue';
+      buttonEl.textContent = '按鈕';
+
+      let containerEl = document.querySelector('.container');
+      containerEl.appendChild(buttonEl);
+
+      buttonEl.remove();
     </script>
   </body>
 </html>

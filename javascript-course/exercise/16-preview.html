@@ -54,23 +54,19 @@
       });
       console.log(newFood);
 
-      let containerEl = document.querySelector('#hashtagContainer');
-      newFood.forEach((v, i, arr) => {
-        let buttonEl = document.createElement('button');
-        // 把按鈕放進去 container
-        buttonEl.textContent = `#${v}`;
-        console.log(i % 5);
-        // 改自定義標籤 data-color 的顏色
+      const hashtagContainerEl = document.querySelector('#hashtagContainer');
+      newFood.forEach((v, i) => {
+        const buttonEl = document.createElement('button');
         buttonEl.dataset.color = i % 5;
-        containerEl.appendChild(buttonEl);
+        buttonEl.textContent = `#${v}`;
+        hashtagContainerEl.appendChild(buttonEl);
       });
 
-      let buttonEls = document.querySelectorAll('button');
-      console.log(buttonEls);
-      for (let buttonEl of buttonEls) {
-        if (buttonEl.textContent === '#Egg salad') {
-          buttonEl.previousElementSibling.previousElementSibling.style.fontWeight = '600';
-          buttonEl.parentNode.lastElementChild.style.fontWeight = '600';
+      const buttonsEl = document.querySelectorAll('button');
+      for (button of buttonsEl) {
+        if (button.textContent === '#Egg salad') {
+          button.previousElementSibling.previousElementSibling.style.fontWeight = '600';
+          button.parentNode.lastElementChild.style.fontWeight = '600';
         }
       }
     </script>
