@@ -28,6 +28,7 @@
       .greeting {
         background: lightblue;
         opacity: 0;
+        /* display: none; */
       }
 
       .show {
@@ -50,7 +51,7 @@
   </head>
 
   <body>
-    <button onclick="showAlert()">HTML onclick 呼叫alert</button>
+    <!-- <button onclick="showAlert()">HTML onclick 呼叫alert</button>
     <button id="alertBtn">DOM onclick 呼叫alert</button>
     <button id="listenerAlertBtn">DOM addEventListener 呼叫alert</button>
     <button id="clickBtn">click 事件</button>
@@ -60,17 +61,22 @@
     <input type="text" value="blur 事件" id="blurInput" />
     <input type="text" value="keydown 事件" id="keydownInput" />
     <input type="text" value="keyup 事件" id="keyupInput" />
-    <input type="text" value="keypress 事件" id="keypressInput" />
+    <input type="text" value="keypress 事件" id="keypressInput" /> -->
+
+    <input type="button" class="greetingBtn" data-index="0" value="打個招呼" />
+
+    <div class="greeting">Hi!</div>
     <script>
+      /*
       const showAlert = () => {
         alert('hi');
       };
       let alertBtnEl = document.getElementById('alertBtn');
-      console.log(alertBtnEl);
+      // console.log(alertBtnEl);
       alertBtnEl.onclick = showAlert;
 
       let listenerAlertBtnEl = document.querySelector('#listenerAlertBtn');
-      console.log(listenerAlertBtnEl);
+      // console.log(listenerAlertBtnEl);
       listenerAlertBtnEl.addEventListener('click', showAlert);
 
       let clickBtnEl = document.querySelector('#clickBtn');
@@ -111,6 +117,39 @@
       let keypressInputEl = document.querySelector('#keypressInput');
       keypressInputEl.addEventListener('keypress', () => {
         console.log('keypress!');
+      });
+      */
+
+      document.addEventListener('DOMContentLoaded', function () {
+        // DOM加載好時要做的事
+        let greetingBtnEl = document.querySelector('.greetingBtn');
+        let greetingEl = document.querySelector('.greeting');
+        let visible = false;
+        greetingBtnEl.addEventListener('click', (event) => {
+          /*
+          console.log(event.type);
+          console.log(event.target.dataset.index);
+          console.log(event.target.value);
+          */
+          // greetingEl.classList.add('show');
+          // greetingEl.classList.remove('show');
+          // greetingEl.classList.toggle('show');
+          /*
+          if (greetingEl.classList.contains('hide')) {
+            greetingEl.classList.replace('hide', 'show');
+          } else {
+            greetingEl.classList.replace('show', 'hide');
+          }
+          */
+          if (visible) {
+            greetingEl.classList.remove('fadeIn');
+            greetingEl.classList.add('fadeOut');
+          } else {
+            greetingEl.classList.add('fadeIn');
+            greetingEl.classList.remove('fadeOut');
+          }
+          visible = !visible;
+        });
       });
     </script>
   </body>

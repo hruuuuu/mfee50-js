@@ -1,15 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>練習12</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>練習12</title>
-</head>
-
-<body>
-  <script>
-  </script>
-</body>
-
+  <body>
+    <script>
+      /*
+      function numGenerator(num,type){
+        return {
+          numbers:[],
+          max: ?,
+          min: ?,
+        }
+      }
+    */
+      function numGenerator(num, type) {
+        function formatNumber(n) {
+          switch (type) {
+            case 'round':
+            default:
+              return Math.round(n);
+            case 'floor':
+              return Math.floor(n);
+            case 'ceil':
+              return Math.ceil(n);
+          }
+        }
+        let numArr = [];
+        if (Array.isArray(num)) {
+          for (let item of num) {
+            let number = isNaN(Number(item)) ? 0 : formatNumber(Number(item));
+            numArr.push(number);
+          }
+        } else if (typeof num === 'number') {
+          for (let i = 1; i <= num; i++) {
+            let random = formatNumber(Math.random() * 100);
+            numArr.push(random);
+          }
+        } else {
+          // ...
+        }
+        return {
+          numbers: numArr,
+          max: Math.max(...numArr),
+          min: Math.min(...numArr),
+        };
+      }
+      console.log(numGenerator([1, 'hi', '2', 3], 'round'));
+      console.log(numGenerator(5, 'round'));
+    </script>
+  </body>
 </html>
