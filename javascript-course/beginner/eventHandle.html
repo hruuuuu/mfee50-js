@@ -50,6 +50,68 @@
   </head>
 
   <body>
-    <script></script>
+    <button onclick="showAlert()">HTML onclick 呼叫alert</button>
+    <button id="alertBtn">DOM onclick 呼叫alert</button>
+    <button id="listenerAlertBtn">DOM addEventListener 呼叫alert</button>
+    <button id="clickBtn">click 事件</button>
+    <button id="mouseoverBtn">mouseover 事件</button>
+    <button id="mouseoutBtn">mouseout 事件</button>
+    <input type="text" value="focus 事件" id="focusInput" />
+    <input type="text" value="blur 事件" id="blurInput" />
+    <input type="text" value="keydown 事件" id="keydownInput" />
+    <input type="text" value="keyup 事件" id="keyupInput" />
+    <input type="text" value="keypress 事件" id="keypressInput" />
+    <script>
+      const showAlert = () => {
+        alert('hi');
+      };
+      let alertBtnEl = document.getElementById('alertBtn');
+      console.log(alertBtnEl);
+      alertBtnEl.onclick = showAlert;
+
+      let listenerAlertBtnEl = document.querySelector('#listenerAlertBtn');
+      console.log(listenerAlertBtnEl);
+      listenerAlertBtnEl.addEventListener('click', showAlert);
+
+      let clickBtnEl = document.querySelector('#clickBtn');
+      clickBtnEl.addEventListener('click', function () {
+        console.log('click!');
+      });
+
+      let mouseoverBtnEl = document.querySelector('#mouseoverBtn');
+      mouseoverBtnEl.addEventListener('mouseover', () => {
+        console.log('mouseover!');
+      });
+
+      let mouseoutBtnEl = document.querySelector('#mouseoutBtn');
+      mouseoutBtnEl.addEventListener('mouseout', () => {
+        console.log('mouseout!');
+      });
+
+      let focusInputEl = document.querySelector('#focusInput');
+      focusInputEl.addEventListener('focus', () => {
+        console.log('focus!');
+      });
+
+      let blurInputEl = document.querySelector('#blurInput');
+      blurInputEl.addEventListener('blur', () => {
+        console.log('blur!');
+      });
+
+      let keydownInputEl = document.querySelector('#keydownInput');
+      keydownInputEl.addEventListener('keydown', () => {
+        console.log('keydown!');
+      });
+
+      let keyupInputEl = document.querySelector('#keyupInput');
+      keyupInputEl.addEventListener('keyup', () => {
+        console.log('keyup!');
+      });
+
+      let keypressInputEl = document.querySelector('#keypressInput');
+      keypressInputEl.addEventListener('keypress', () => {
+        console.log('keypress!');
+      });
+    </script>
   </body>
 </html>
