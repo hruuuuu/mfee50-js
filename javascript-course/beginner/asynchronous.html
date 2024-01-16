@@ -15,12 +15,92 @@
       console.log('c');
       */
 
+      /*
+      function function1(callback) {
+        setTimeout(() => {
+          console.log('f1');
+          callback(); // function2()
+        }, 0);
+      }
+      function function2() {
+        console.log('f2');
+      }
+      // function1(function2);
+      
+      function1(function () {
+        console.log('f2');
+      });
+      
+      function1(() => {
+        console.log('f2');
+      });
+      */
+
+      /*
       function doWork(work, time, callback) {
         setTimeout(() => {
           callback(`完成 ${work}`);
         }, time);
+        // console.log('f1');
       }
 
+      // 正確寫法 callback 先執行完前面的的事才執行下一件事
+      console.log(`起床 ${new Date().toISOString()}`);
+      doWork('刷牙', 2000, (result) => {
+        console.log(`${result} ${new Date().toISOString()}`);
+        doWork('洗臉', 3000, (result) => {
+          console.log(`${result} ${new Date().toISOString()}`);
+          doWork('吃早餐', 5000, (result) => {
+            console.log(`${result} ${new Date().toISOString()}`);
+          });
+        });
+      });
+      */
+
+      function doWork(work, time) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            /*
+            if (work === '吃早餐') {
+              reject(`無法完成 ${work}`);
+            } else {
+              resolve(`完成 ${work}`);
+            }
+            */
+            resolve(`完成 ${work}`);
+          }, time);
+        });
+      }
+
+      doWork('刷牙', 2000)
+        .then((result) => {
+          console.log(`${result} ${new Date().toISOString()}`);
+          return doWork('洗臉', 3000);
+        })
+        .then((result) => {
+          console.log(`${result} ${new Date().toISOString()}`);
+          return doWork('吃早餐', 5000);
+        })
+        .then((result) => {
+          console.log(`${result} ${new Date().toISOString()}`);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(() => {
+          console.log('所有工作結束');
+        });
+
+      let work1 = doWork('刷牙', 2000);
+      let work2 = doWork('洗臉', 3000);
+      let work3 = doWork('吃早餐', 5000);
+
+      Promise.all([work1, work2, work3]).then((results) => {
+        console.log(results);
+      });
+
+      /*
+      // 錯誤寫法 同時進行
       console.log(`起床 ${new Date().toISOString()}`);
       doWork('刷牙', 2000, (result) => {
         console.log(`${result} ${new Date().toISOString()}`);
@@ -31,6 +111,7 @@
       doWork('吃早餐', 5000, (result) => {
         console.log(`${result} ${new Date().toISOString()}`);
       });
+      */
     </script>
   </body>
 </html>
