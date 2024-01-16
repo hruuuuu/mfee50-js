@@ -1,14 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>表單處理 Form</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>表單處理 Form</title>
-</head>
+  <body>
+    <form id="infoForm">
+      <label for="name">姓名</label>
+      <input type="text" name="name" id="name" />
+      <label for="color">喜歡的顏色</label>
+      <input type="text" name="color" id="color" />
+    </form>
+    <form id="signupForm">
+      <label for="account">帳號</label>
+      <input type="text" name="account" id="account" />
+      <label for="password">密碼</label>
+      <input type="password" name="password" id="password" />
+      <input type="submit" value="提交資訊表單" form="infoForm" />
+      <input type="submit" value="提交註冊表單" form="signupForm" />
+    </form>
 
-<body>
-  <script></script>
-</body>
+    <!-- <textarea>...</textarea> -->
+    <script>
+      // document.querySelector('[data-index="1"]')
 
+      /*
+      const greeting = function () {
+        console.log('hi');
+      };
+
+      let array =[];
+      // state
+      */
+
+      const nameInputEl = document.querySelector('[name="name"]');
+      const colorInputEl = document.querySelector('[name="color"]');
+      // console.log(nameInputEl.value);
+      // colorInputEl.value = 'blue';
+
+      /*
+      // blur (not focus) 的時候觸發 change 事件
+      nameInputEl.addEventListener('change', (e) => {
+        console.log(e.target.value);
+      });
+
+      colorInputEl.addEventListener('keyup', (e) => {
+        console.log(e.target.value);
+      });
+      */
+
+      const infoFormEl = document.querySelector('#infoForm');
+      const signupFormEl = document.querySelector('#signupForm');
+      infoFormEl.addEventListener('submit', (e) => {
+        e.preventDefault();
+        console.log('資訊表單已被提交');
+      });
+
+      signupFormEl.addEventListener('submit', (e) => {
+        e.preventDefault();
+        console.log('註冊表單已被提交');
+      });
+    </script>
+  </body>
 </html>
