@@ -21,20 +21,20 @@
       <input type="hidden" name="pet" value="cat" />
       <input type="submit" value="提交資訊表單" form="infoForm" />
     </form>
-    <form id="signupForm">
+    <form novalidate id="signupForm">
       <div>
         <label for="account">帳號</label>
         <input type="text" name="account" id="account" required />
         <div id="accountMsg" class="msg"></div>
       </div>
       <div>
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" required />
-      </div>
-      <div>
         <label for="password">密碼</label>
         <input type="password" name="password" id="password" minlength="6" maxlength="12" required />
         <div id="passwordMsg" class="msg"></div>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required />
       </div>
       <div>
         <label for="age">年齡</label>
@@ -122,8 +122,13 @@
         let isValid = true;
         const accountMsgEl = document.querySelector('#accountMsg');
         const passwordMsgEl = document.querySelector('#passwordMsg');
+        // 清掉上一次送出時的訊息
         accountMsgEl.textContent = '';
         passwordMsgEl.textContent = '';
+        /*
+        variable.get(key);
+        variable.set(key, value);
+        */
         if (!formData.get('account')) {
           accountMsgEl.textContent = '帳號為必填';
           isValid = false;
@@ -134,6 +139,7 @@
         }
         if (isValid) {
           // 把 formData 拿來打api
+          // e.target.submit();
           console.log('提交成功');
         }
       });
