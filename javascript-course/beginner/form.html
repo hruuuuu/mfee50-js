@@ -4,21 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>表單處理 Form</title>
+    <style>
+      .msg {
+        color: red;
+      }
+    </style>
   </head>
 
   <body>
     <form id="infoForm">
       <label for="name">姓名</label>
-      <input type="text" name="name" id="name" />
+      <input type="text" name="name" id="name" value="" />
       <label for="color">喜歡的顏色</label>
       <input type="text" name="color" id="color" />
+      喜歡的寵物：cat
+      <input type="hidden" name="pet" value="cat" />
+      <input type="submit" value="提交資訊表單" form="infoForm" />
     </form>
     <form id="signupForm">
-      <label for="account">帳號</label>
-      <input type="text" name="account" id="account" />
-      <label for="password">密碼</label>
-      <input type="password" name="password" id="password" />
-      <input type="submit" value="提交資訊表單" form="infoForm" />
+      <div>
+        <label for="account">帳號</label>
+        <input type="text" name="account" id="account" required />
+        <div id="accountMsg" class="msg"></div>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required />
+      </div>
+      <div>
+        <label for="password">密碼</label>
+        <input type="password" name="password" id="password" minlength="6" maxlength="12" required />
+        <div id="passwordMsg" class="msg"></div>
+      </div>
+      <div>
+        <label for="age">年齡</label>
+        <input type="number" name="age" id="age" />
+      </div>
+      <div>
+        <label for="birthday">生日</label>
+        <input type="date" name="birthday" id="birthday" />
+      </div>
+      <div>
+        <label for="file">檔案</label>
+        <input type="file" name="file" id="file" />
+      </div>
       <input type="submit" value="提交註冊表單" form="signupForm" />
     </form>
 
@@ -53,14 +82,60 @@
 
       const infoFormEl = document.querySelector('#infoForm');
       const signupFormEl = document.querySelector('#signupForm');
+
+      // JSON
+      // {
+      //   "name": "Allie",
+      //   "color": "white",
+      //   "pet": "cat"
+      // }
       infoFormEl.addEventListener('submit', (e) => {
         e.preventDefault();
         console.log('資訊表單已被提交');
+        console.log(e.target.elements);
+        let formObj = {};
+        for (let element of e.target.elements) {
+          if (element.name) {
+            formObj[element.name] = element.value;
+            /*
+            // state
+            formObj = {...formObj, [element.name]: element.value};
+            */
+          }
+        }
+        console.log(formObj);
       });
 
+      // FormData
+      // entries array
+      // [account, "test123"]
+      // [password, "pass123"]
       signupFormEl.addEventListener('submit', (e) => {
         e.preventDefault();
-        console.log('註冊表單已被提交');
+        // console.log('註冊表單已被提交');
+        let formData = new FormData(e.target);
+
+        for (let [key, value] of formData.entries()) {
+          console.log(key, value);
+        }
+
+        let isValid = true;
+        const accountMsgEl = document.querySelector('#accountMsg');
+        const passwordMsgEl = document.querySelector('#passwordMsg');
+        accountMsgEl.textContent = '';
+        passwordMsgEl.textContent = '';
+        if (!formData.get('account')) {
+          accountMsgEl.textContent = '帳號為必填';
+          isValid = false;
+        }
+        if (formData.get('password').length < 6) {
+          passwordMsgEl.textContent = '密碼長度至少6位數';
+          isValid = false;
+        }
+        if (isValid) {
+          // 把 formData 拿來打api
+          console.log('提交成功');
+        }
       });
     </script>
   </body>
