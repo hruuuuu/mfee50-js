@@ -19,14 +19,15 @@
       function function1(callback) {
         setTimeout(() => {
           console.log('f1');
-          callback(); // function2()
         }, 0);
+        callback(); // function2()
       }
       function function2() {
         console.log('f2');
       }
-      // function1(function2);
-      
+      function1(function2);
+
+      /*
       function1(function () {
         console.log('f2');
       });
