@@ -5,5 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Asynchronous 非同步</title>
   </head>
-  <body></body>
+  <body>
+    <script>
+      /*
+      console.log('a');
+      setTimeout(() => {
+        console.log('b');
+      }, 0);
+      console.log('c');
+      */
+
+      function doWork(work, time, callback) {
+        setTimeout(() => {
+          callback(`完成 ${work}`);
+        }, time);
+      }
+
+      console.log(`起床 ${new Date().toISOString()}`);
+      doWork('刷牙', 2000, (result) => {
+        console.log(`${result} ${new Date().toISOString()}`);
+      });
+      doWork('洗臉', 3000, (result) => {
+        console.log(`${result} ${new Date().toISOString()}`);
+      });
+      doWork('吃早餐', 5000, (result) => {
+        console.log(`${result} ${new Date().toISOString()}`);
+      });
+    </script>
+  </body>
 </html>
