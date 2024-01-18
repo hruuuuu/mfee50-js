@@ -168,26 +168,32 @@
       </div>
     </div>
     <script>
-      let btnEls = document.querySelectorAll('.btn');
-      let contentEls = document.querySelectorAll('.content');
+      const btnEls = document.querySelectorAll('.btn');
+      const contentEls = document.querySelectorAll('.content');
       let activeEl = null;
-      btnEls.forEach((btn, i) => {
-        btn.addEventListener('mouseover', (e) => {
+      btnEls.forEach((v, i, arr) => {
+        v.addEventListener('mouseover', (event) => {
+          /*
+          contentEls.forEach((contentEl) => {
+            contentEl.classList.remove('active');
+          });
+          */
+          // console.log(event.target.nextElementSibling);
           if (activeEl) {
             activeEl.classList.remove('active');
           }
-          activeEl = e.target.nextElementSibling;
-          activeEl.classList.toggle('active');
+          activeEl = event.target.nextElementSibling;
+          activeEl.classList.add('active');
         });
-        btn.addEventListener('mouseout', (e) => {
+        v.addEventListener('mouseout', (event) => {
           if (activeEl) {
             activeEl.classList.remove('active');
             activeEl = null;
           }
+          // event.target.nextElementSibling.classList.remove('active');
         });
-        btn.addEventListener('click', (e) => {
-          let clickActiveEl = e.target.nextElementSibling.lastElementChild;
-          clickActiveEl.classList.toggle('active');
+        v.addEventListener('click', (event) => {
+          event.target.nextElementSibling.lastElementChild.classList.toggle('active');
         });
       });
     </script>
