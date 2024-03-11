@@ -6,6 +6,20 @@
     <title>Regular Expression 正則表達式</title>
   </head>
   <body>
-    <script></script>
+    <script>
+      let string = 'Hello world';
+      let greeting = /Hello/;
+      let place = new RegExp('world');
+
+      // 正則表達式去測試
+      console.log(greeting.test(string)); // true
+      console.log(place.exec(string)); // ['world', index: 6, input: 'Hello world', groups: undefined]
+
+      // 字串去測試
+      console.log(string.match(greeting)); // ['Hello', index: 0, input: 'Hello world', groups: undefined]
+      console.log(string.match(/aaa/)); // null
+      console.log(string.replace(place, 'Taiwan')); // Hello Taiwan
+      console.log(string.replace(/aaa/, 'Taiwan')); // Hello world
+    </script>
   </body>
 </html>
