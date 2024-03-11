@@ -6,6 +6,14 @@
     <title>Event loop 事件循環</title>
   </head>
   <body>
-    <script></script>
+    <script>
+      function printPlace() {
+        console.log('Taiwan');
+      }
+
+      console.log('Hello');
+      setTimeout(printPlace, 3000);
+      console.log('!');
+    </script>
   </body>
 </html>

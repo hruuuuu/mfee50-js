@@ -27,7 +27,7 @@
               <li class="text-danger">至少包含一個特殊字符 (不包含底線、空白、冒號)</li>
               <li class="text-danger">長度在8到16個字符之間</li>
             </ul>
-            <button type="submit" class="btn btn-primary">提交</button>
+            <button type="submit" class="btn btn-primary" disabled>提交</button>
           </form>
         </div>
       </div>
@@ -36,5 +36,34 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"></script>
+    <script>
+      document.querySelector('input').addEventListener('keyup', (e) => {
+        // ^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$
+        const value = e.target.value;
+        const regex1 = /^(?=.*\d)/;
+        const regex2 = /^(?=.*[A-Z])/;
+        const regex3 = /^(?=.*[a-z])/;
+        const regex4 = /^(?=.*[^\w\d\s:])/;
+        const regex5 = /^([^\s]){8,16}/;
+
+        const liEls = document.querySelectorAll('li');
+
+        const regexs = [regex1, regex2, regex3, regex4, regex5];
+
+        regexs.forEach((regex, i, arr) => {
+          if (regex.test(value)) {
+            liEls[i].classList.remove('text-danger');
+            liEls[i].classList.add('text-success');
+          } else {
+            liEls[i].classList.add('text-danger');
+            liEls[i].classList.remove('text-success');
+          }
+        });
+
+        const pass = regex1.test(value) && regex2.test(value) && regex3.test(value) && regex4.test(value) && regex4.test(value);
+
+        document.querySelector('.btn').disabled = !pass;
+      });
+    </script>
   </body>
 </html>
