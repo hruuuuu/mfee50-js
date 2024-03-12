@@ -15,21 +15,32 @@
       <div class="vstack gap-3">
         <h2>待辦事項</h2>
         <input type="text" name="task" id="task" class="form-control" />
-        <button class="btn btn-primary">新增事項</button>
-        <ul id="list" class="list-group">
-          <li class="list-group-item d-flex">
-            <div class="vstack">
-              <div class="fw-bold">事項名稱</div>
-              <small>創建時間: 2014/03/12 11:37</small>
-            </div>
-            <button class="btn btn-success">完成</button>
-          </li>
-        </ul>
+        <button class="btn btn-primary" id="add">新增事項</button>
+        <ul class="list-group"></ul>
       </div>
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"></script>
+
+    <script>
+      document.querySelector('#add').addEventListener('click', () => {
+        const inputEl = document.querySelector('input');
+        const newTask = inputEl.value;
+        if (newTask) {
+          const liEl = document.createElement('li');
+          liEl.classList = 'list-group-item d-flex';
+          liEl.innerHTML = `
+          <div class="vstack">
+            <div class="fw-bold">${newTask}</div>
+            <small>創建時間: ${new Date().toISOString()}</small>
+          </div>
+          <button class="btn btn-success">完成</button>`;
+          document.querySelector('ul').appendChild(liEl);
+          inputEl.value = '';
+        }
+      });
+    </script>
   </body>
 </html>
