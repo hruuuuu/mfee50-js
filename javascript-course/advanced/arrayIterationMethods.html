@@ -15,6 +15,71 @@
         {name: '智能手機', category: '電子產品', price: 20000, stock: 15},
         {name: '牛仔褲', category: '服裝', price: 600, stock: 30},
       ];
+
+      /*
+      // 淺拷貝
+      const newProducts = [...products];
+      newProducts[0].name = '電腦';
+      console.log(products);
+      console.log(newProducts);
+      */
+
+      /*
+      // 深拷貝
+      const newProducts = JSON.parse(JSON.stringify(products));
+      newProducts[0].name = '電腦';
+      console.log(products);
+      console.log(newProducts);
+      */
+
+      // 迭代 iteration   遍歷 loop through
+      products.forEach((v, i, arr) => {});
+      /*
+      const productNames = products.map((v, i, arr) => {
+        return v.name;
+      });
+      */
+      /*
+      const productNames = products.map((v) => v.name);
+      console.log(productNames);
+
+      console.log(productNames[productNames.length - 1]);
+      console.log(productNames.at(-1));
+      */
+
+      const electronicProducts = products.filter((v, i, arr) => {
+        return v.category === '電子產品';
+      });
+      // console.log(electronicProducts);
+
+      const otherProducts = products.filter((v, i, arr) => {
+        return v.category !== '文學';
+      });
+      // console.log(otherProducts);
+
+      // 升冪
+      const acendProducts = [...products].sort((a, b) => {
+        return a.price - b.price;
+      });
+      console.log(acendProducts);
+
+      // 降冪
+      const decendProducts = [...products].sort((a, b) => b.price - a.price);
+      console.log(decendProducts);
+
+      const checkStock = products.some((v) => {
+        return v.stock < 10;
+      });
+      console.log(checkStock);
+
+      const checkPrice = products.every((v) => v.price > 1000);
+      console.log(checkPrice);
+
+      const apparelProduct = products.find((v) => v.category === '服裝');
+      console.log(apparelProduct);
+
+      const noResultProduct = products.find((v) => v.stock > 1000);
+      console.log(noResultProduct); // undefined
     </script>
   </body>
 </html>

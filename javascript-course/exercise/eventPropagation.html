@@ -34,11 +34,21 @@
           liEl.innerHTML = `
           <div class="vstack">
             <div class="fw-bold">${newTask}</div>
-            <small>創建時間: ${new Date().toISOString()}</small>
+            <small class="d-none">創建時間: ${new Date().toISOString()}</small>
           </div>
-          <button class="btn btn-success">完成</button>`;
+          <button class="btn btn-success" id="complete">完成</button>`;
           document.querySelector('ul').appendChild(liEl);
           inputEl.value = '';
+        }
+      });
+
+      document.querySelector('ul').addEventListener('click', (e) => {
+        if (e.target.classList.contains('btn-success')) {
+          e.stopPropagation();
+          e.target.parentNode.querySelector('.fw-bold').classList.toggle('text-decoration-line-through');
+        } else {
+          const liEl = e.target.closest('li');
+          liEl.querySelector('small').classList.toggle('d-none');
         }
       });
     </script>
