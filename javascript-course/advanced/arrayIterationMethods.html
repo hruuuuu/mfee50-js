@@ -80,6 +80,28 @@
 
       const noResultProduct = products.find((v) => v.stock > 1000);
       console.log(noResultProduct); // undefined
+
+      const apparelProductIndex = products.findIndex((v) => v.category === '服裝');
+      console.log(apparelProductIndex); // 1
+
+      const noResultProductIndex = products.findIndex((v) => v.stock > 1000);
+      console.log(noResultProductIndex); // -1
+
+      /*
+      // initialValue = 0;
+      let arr = [1,2,3,4,5];
+      []
+      {}
+      arr.reduce((acc,currentValue)=>{
+        return acc + currentValue
+      }, initialValue);
+      */
+
+      console.log(products);
+      const totalPrice = products.reduce((total, item) => {
+        return total + item.price;
+      }, 0);
+      console.log(totalPrice);
     </script>
   </body>
 </html>
