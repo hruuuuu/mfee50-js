@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>閉包練習</title>
+  </head>
+  <body>
+    <script>
+      // const [state, setState] = useState();
+
+      function useState(initialValue) {
+        let value = initialValue;
+        function getState() {
+          return value;
+        }
+        function setState(newValue) {
+          value = newValue;
+          console.log(`新的狀態為:${value}`);
+        }
+        return [getState, setState];
+      }
+
+      const [getState, setState] = useState('hi');
+
+      console.log(getState());
+      setState('hello');
+      console.log(getState());
+    </script>
+  </body>
+</html>

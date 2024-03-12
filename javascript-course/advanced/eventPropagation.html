@@ -33,5 +33,37 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"></script>
+    <script>
+      const parentEl = document.querySelector('#parent');
+      const childEl = document.querySelector('#child');
+
+      parentEl.addEventListener(
+        'click',
+        () => {
+          console.log('parent 冒泡');
+        },
+        false
+      );
+
+      parentEl.addEventListener(
+        'click',
+        () => {
+          console.log('parent 捕獲');
+        },
+        true
+      );
+
+      childEl.addEventListener('click', () => {
+        console.log('child 冒泡');
+      });
+
+      childEl.addEventListener(
+        'click',
+        () => {
+          console.log('child 捕獲');
+        },
+        true
+      );
+    </script>
   </body>
 </html>

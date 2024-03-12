@@ -5,5 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>閉包 Closure</title>
   </head>
-  <body></body>
+  <body>
+    <script>
+      /*
+      function closureCounter() {
+        let count = 0;
+        function increment() {
+          count += 1;
+          return count;
+        }
+        return increment;
+      }
+
+      console.log(closureCounter());
+
+      const counter = closureCounter(); // increment
+      console.log(counter()); // 1
+      console.log(counter()); // 2
+      console.log(counter()); // 3
+      */
+
+      function closureCounter() {
+        let count = 0;
+        return function () {
+          count += 1;
+          return count;
+        };
+      }
+
+      const counter = closureCounter();
+      console.log(counter()); // 1
+      console.log(counter()); // 2
+      console.log(counter()); // 3
+
+      /*
+      function counter() {
+        let count = 0;
+        count += 1;
+        return count;
+      }
+
+      console.log(counter()); // 1
+      console.log(counter()); // 1
+      console.log(counter()); // 1
+      */
+    </script>
+  </body>
 </html>
