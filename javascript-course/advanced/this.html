@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>this</title>
+  </head>
+  <body>
+    <script>
+      'use strict';
+      function printThis() {
+        // console.log(this);
+      }
+      printThis();
+
+      // console.log(this);
+
+      /*
+      // 物件方法 function 裡的 this 指向物件本身
+      const info = {
+        name: 'Allie',
+        printName: function () {
+          console.log(this.name);
+        },
+      };
+      info.printName();
+      */
+
+      // 構造函數
+      // 構造函數的 this 指向實例
+      function Place(country) {
+        this.place = country;
+      }
+
+      // 創建實例 instance
+      const instance = new Place('Taiwan');
+      const instance2 = new Place('world');
+      console.log(instance.place); // Taiwan
+      console.log(instance2.place); // world
+
+      // 物件方法 function 裡的 this 指向物件本身
+      // 箭頭函數不綁定自己的 this
+      const info = {
+        name: 'Allie',
+        printName: () => {
+          console.log(this); // window
+        },
+        delayPrintName: function () {
+          setTimeout(() => {
+            console.log(this); // {name: 'Allie', printName: ƒ, delayPrintName: ƒ}
+          }, 1000);
+        },
+      };
+
+      info.printName();
+      info.delayPrintName();
+    </script>
+  </body>
+</html>
