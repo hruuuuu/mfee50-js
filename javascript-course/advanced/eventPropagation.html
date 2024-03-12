@@ -36,7 +36,9 @@
     <script>
       const parentEl = document.querySelector('#parent');
       const childEl = document.querySelector('#child');
+      const cardEl = document.querySelector('.card');
 
+      /*
       parentEl.addEventListener(
         'click',
         () => {
@@ -64,6 +66,37 @@
         },
         true
       );
+      */
+
+      // 事件委託
+      parentEl.addEventListener('click', (event) => {
+        // console.log(event.target);
+        if (event.target.id === 'child') {
+          // console.log(event.target); // 目標元素
+          // console.log(event.currentTarget); // 事件綁定的元素
+        }
+      });
+
+      /*
+      childEl.addEventListener('click', () => {
+        cardEl.classList.remove('d-none');
+      });
+      */
+
+      document.addEventListener('click', (e) => {
+        if (e.target.id === 'child') {
+          cardEl.classList.toggle('d-none');
+        } else {
+          cardEl.classList.add('d-none');
+        }
+        // else if (!cardEl.contains(e.target)) {
+        //   cardEl.classList.add('d-none');
+        // }
+      });
+
+      cardEl.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
     </script>
   </body>
 </html>
