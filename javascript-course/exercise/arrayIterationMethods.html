@@ -53,6 +53,15 @@
       // 1. 找出 farm 裡英文名字不含有 e 的動物
       // 2. 依照母的數量大小排序(升冪)
       // 3. 計算出母的數量總數 存成 countAnimal 變數
+
+      const noEAnimals = farm.filter((v) => !v.en.includes('e'));
+      // console.log(noEAnimals);
+
+      const sortAnimals = noEAnimals.sort((a, b) => a.female - b.female);
+      console.log(sortAnimals);
+
+      const countAnimal = sortAnimals.reduce((total, animal) => total + animal.female, 0);
+      console.log(countAnimal);
     </script>
   </body>
 </html>
