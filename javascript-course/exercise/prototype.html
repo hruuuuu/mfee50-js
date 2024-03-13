@@ -17,12 +17,36 @@
         console.log(this);
       }
 
-      // prototype 上寫一個 deposit 方法
+      // prototype 上寫一個 deposit 存款 方法
       // 參數: amount 金額
       // 如果 amount > 0, 就加到 balance 上
-      // console.log(`金額 ... 存款成功, 餘額: ...`);
+      // console.log(`金額 ... 存款成功, 餘額: ...。`);
+      Account.prototype.deposit = function (amount) {
+        if (amount > 0) {
+          this.balance += amount;
+          console.log(`金額 ${amount} 存款成功, 餘額: ${this.balance}。`);
+        }
+      };
 
-      const allieAccount = new Account('001', 'Allie', 1000);
+      // prototype 上寫一個 withdraw 提款 方法
+      // 參數: amount 金額
+      // 如果 amount > balance, 就 console.log(`餘額不足, 提款失敗。`);
+      // 否則 console.log(`金額 ... 提款成功, 餘額: ...`);
+      Account.prototype.withdraw = function (amount) {
+        if (amount > this.balance) {
+          console.log(`餘額不足, 提款失敗。`);
+        } else {
+          this.balance -= amount;
+          console.log(`金額 ${amount} 提款成功, 餘額: ${this.balance}。`);
+        }
+      };
+
+      // prototype 上寫一個 getBalance 查餘額 方法
+      // return 餘額
+
+      const alliesAccount = new Account('001', 'Allie', 1000);
+      alliesAccount.deposit(100);
+      alliesAccount.withdraw(100);
     </script>
   </body>
 </html>
