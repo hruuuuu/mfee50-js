@@ -60,20 +60,68 @@
       console.log(allie.age);
       */
 
+      /*
       class Person {
-        color = 'white';
         constructor(data) {
           this._name = data.name;
           this._age = data.age;
-          this._color = 'blue';
-          this._pet = data.pet;
+        }
+        introduce() {
+          console.log(`這是 ${this._name}, 年齡 ${this._age} 歲`);
+        }
+        get age() {
+          return this._age;
+        }
+        set age(newAge) {
+          this._age = newAge;
+        }
+        get name() {
+          return this._name;
+        }
+
+        getAge(){
+          // ...
+        }
+
+        setAge(){
+          // ...
+        }
+      }
+      const allie = new Person({name: 'Allie', age: 18, pet: 'dog'});
+      console.log(allie._age); // (x)
+      console.log(allie.age);
+      allie.age = 28;
+      console.log(allie.age);
+      console.log(allie.name);
+      */
+
+      class Person {
+        constructor(name, age) {
+          this._name = name;
+          this._age = age;
         }
         introduce() {
           console.log(`這是 ${this._name}, 年齡 ${this._age} 歲`);
         }
       }
 
-      const allie = new Person({name: 'Allie', age: 18, pet: 'dog'});
+      class Student extends Person {
+        constructor(name, age, school) {
+          super(name, age);
+          this._school = school;
+        }
+        introduce() {
+          super.introduce();
+          console.log(`正在 ${this._school} 上課`);
+        }
+        study() {
+          console.log(`${this._name} 正在 ${this._school} 上課`);
+        }
+      }
+
+      const allie = new Student('Allie', 18, '資展');
+      allie.introduce();
+      allie.study();
     </script>
   </body>
 </html>
