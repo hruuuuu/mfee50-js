@@ -6,6 +6,33 @@
     <title>類別 Class</title>
   </head>
   <body>
-    <script></script>
+    <script>
+      class Person {
+        color = 'white';
+        constructor(data) {
+          this.name = data.name;
+          this.age = data.age;
+          this.color = 'blue';
+          this.pet = data.pet;
+        }
+        introduce() {
+          console.log(`這是 ${this.name}, 年齡 ${this.age} 歲`);
+        }
+        // 靜態屬性/ 方法, 不能被實例調用, 但是 this 又指向實例, 所以 this 會是 undefined
+        static printAge(person) {
+          console.log(person.age);
+          // console.log(this.age); // undefined
+        }
+      }
+
+      const allie = new Person({name: 'Allie', age: 18, pet: 'dog'});
+      /*
+      console.log(allie.color);
+      console.log(allie.pet);
+      allie.introduce();
+      */
+      // allie.printAge(); (x)
+      Person.printAge(allie);
+    </script>
   </body>
 </html>
