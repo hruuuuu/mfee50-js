@@ -8,14 +8,15 @@
   <body>
     <script>
       'use strict';
+      /*
       function printThis() {
-        // console.log(this);
+        console.log(this);
       }
       printThis();
 
       // console.log(this);
 
-      /*
+      
       // 物件方法 function 裡的 this 指向物件本身
       const info = {
         name: 'Allie',
@@ -24,7 +25,7 @@
         },
       };
       info.printName();
-      */
+      
 
       // 構造函數
       // 構造函數的 this 指向實例
@@ -54,6 +55,21 @@
 
       info.printName();
       info.delayPrintName();
+      */
+
+      function greet(greeting1, greeting2) {
+        console.log(this);
+        console.log(`${greeting1}, ${this.name}${greeting2}`);
+      }
+
+      const place = {name: 'world'};
+
+      // greet('Hello', '!');
+      greet.apply(place, ['Hello', '!']);
+      greet.call(place, 'Hi', '!');
+
+      const greeting = greet.bind(place, 'Hello', '.');
+      greeting();
     </script>
   </body>
 </html>

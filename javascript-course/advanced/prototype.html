@@ -6,6 +6,55 @@
     <title>原型 Prototype</title>
   </head>
   <body>
-    <script></script>
+    <script>
+      // new Date()
+      // new RegExp()
+      function Person(data) {
+        this.name = data.name;
+        this.age = data.age;
+        this.pet = 'cat';
+        let profile = `${this.name}(${this.age})`;
+        console.log(this);
+      }
+
+      Person.prototype.color = 'white';
+      Person.prototype.introduce = function () {
+        console.log(`這是 ${this.name}, 年齡 ${this.age} 歲`);
+      };
+
+      /*
+      const allie = new Person({name: 'Allie', age: 18});
+      const tom = new Person({name: 'Tom', age: 30});
+
+      allie.introduce();
+      tom.introduce();
+      console.log(allie.color);
+      console.log(tom.color);
+      console.log(allie.pet);
+      console.log(allie.profile);
+      */
+
+      // console.log(allie.__proto__); // 不建議使用
+      // console.log(Object.getPrototypeOf(allie));
+
+      function Student(data, school) {
+        // this 指向 Student 的實例, 讓 Person 的 this 綁定到 Student 的 this (也就是實例)
+        Person.call(this, data);
+        this.school = school;
+      }
+
+      // 繼承 Person 的 prototype
+      Student.prototype = Object.create(Person.prototype);
+      Student.prototype.constructor = Student;
+
+      Student.prototype.study = function () {
+        console.log(`${this.name} 正在 ${this.school} 上課`);
+      };
+
+      const allie = new Student({name: 'Allie', age: 18}, '資展');
+      allie.introduce();
+      allie.study();
+      console.log(allie.color);
+    </script>
   </body>
 </html>

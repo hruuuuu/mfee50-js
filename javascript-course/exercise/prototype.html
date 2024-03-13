@@ -6,6 +6,23 @@
     <title>原型練習</title>
   </head>
   <body>
-    <script></script>
+    <script>
+      // 帳戶
+      // Account 的構造函數
+      // 參數: accountNumber 帳戶號碼, ownerName 帳戶擁有者, balance 餘額
+      function Account(accountNumber, ownerName, balance) {
+        this.accountNumber = accountNumber;
+        this.ownerName = ownerName;
+        this.balance = balance || 0;
+        console.log(this);
+      }
+
+      // prototype 上寫一個 deposit 方法
+      // 參數: amount 金額
+      // 如果 amount > 0, 就加到 balance 上
+      // console.log(`金額 ... 存款成功, 餘額: ...`);
+
+      const allieAccount = new Account('001', 'Allie', 1000);
+    </script>
   </body>
 </html>
