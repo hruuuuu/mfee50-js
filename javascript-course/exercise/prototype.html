@@ -71,8 +71,14 @@
       // 利息 = (利率 * 餘額) / 100
       // 再把利息加上餘額
       // console.log(`存款利息 ..., 餘額: ...。`);
+      SavingsAccount.prototype.addInterest = function () {
+        const interest = (this.interestRate * this.balance) / 100;
+        this.balance += interest;
+        console.log(`存款利息 ${interest}, 餘額: ${this.balance}。`);
+      };
 
       const mySavingsAccount = new SavingsAccount('001', 'Allie', 1000, 2);
+      mySavingsAccount.addInterest();
     </script>
   </body>
 </html>
