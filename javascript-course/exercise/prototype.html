@@ -43,10 +43,16 @@
 
       // prototype 上寫一個 getBalance 查餘額 方法
       // return 餘額
+      // console.log(`餘額: ...。`)
+      Account.prototype.getBalance = function () {
+        console.log(`餘額: ${this.balance}。`);
+        return this.balance;
+      };
 
       const alliesAccount = new Account('001', 'Allie', 1000);
       alliesAccount.deposit(100);
       alliesAccount.withdraw(100);
+      console.log(alliesAccount.getBalance());
     </script>
   </body>
 </html>
