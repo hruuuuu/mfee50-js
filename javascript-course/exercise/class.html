@@ -6,6 +6,78 @@
     <title>類別練習</title>
   </head>
   <body>
-    <script></script>
+    <script>
+      class Account {
+        constructor(accountNumber, ownerName, balance) {
+          this._accountNumber = accountNumber;
+          this._ownerName = ownerName;
+          this._balance = balance || 0;
+        }
+        deposit(amount) {
+          if (amount > 0) {
+            this._balance += amount;
+            console.log(`金額 ${amount} 存款成功, 餘額: ${this._balance}。`);
+          }
+        }
+        withdraw(amount) {
+          if (amount > this._balance) {
+            console.log(`餘額不足, 提款失敗。`);
+          } else {
+            this._balance -= amount;
+            console.log(`金額 ${amount} 扣款成功, 餘額: ${this._balance}。`);
+          }
+        }
+        getBalance() {
+          console.log(`餘額: ${this._balance}。`);
+          return this._balance;
+        }
+      }
+
+      const myAccount = new Account('001', 'Allie', 1000);
+      myAccount.deposit(500);
+      myAccount.withdraw(500);
+      console.log(myAccount.getBalance());
+
+      // SavingsAccount
+      class SavingsAccount extends Account {
+        constructor(accountNumber, ownerName, balance, interestRate) {
+          super(accountNumber, ownerName, balance);
+          this._interestRate = interestRate;
+        }
+        addInterest() {
+          const interest = (this._interestRate * this._balance) / 100;
+          this._balance += interest;
+          console.log(`存款利息 ${interest}, 餘額: ${this._balance}。`);
+        }
+      }
+
+      const mySavingsAccount = new SavingsAccount('001', 'Allie', 1000, 2);
+      mySavingsAccount.addInterest();
+
+      class CheckingAccount extends Account {
+        constructor(accountNumber, ownerName, balance, freeTransactions) {
+          super(accountNumber, ownerName, balance);
+          this._freeTransactions = freeTransactions;
+          this._transactionCount = 0;
+        }
+        withdraw(amount) {
+          super.withdraw(amount);
+          this._transactionCount++;
+          if (this._transactionCount > this._freeTransactions) {
+            console.log(`扣除交易手續費。`);
+            super.withdraw(10);
+          }
+        }
+        resetTransactionCount() {
+          this._transactionCount = 0;
+        }
+      }
+      const myCheckingAccount = new CheckingAccount('001', 'Allie', 1000, 2);
+      myCheckingAccount.withdraw(200);
+      myCheckingAccount.withdraw(200);
+      myCheckingAccount.withdraw(200);
+      myCheckingAccount.resetTransactionCount();
+      myCheckingAccount.withdraw(100);
+    </script>
   </body>
 </html>
