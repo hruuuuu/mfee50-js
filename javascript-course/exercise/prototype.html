@@ -56,8 +56,23 @@
 
       // 儲蓄帳戶
       // SavingsAccount 的構造函數
-      // 繼承
+      // this 綁定
       // 參數: interestRate 利息比率
+      function SavingsAccount(accountNumber, ownerName, balance, interestRate) {
+        Account.call(this, accountNumber, ownerName, balance);
+        this.interestRate = interestRate;
+      }
+
+      // prototype 繼承
+      SavingsAccount.prototype = Object.create(Account.prototype);
+      SavingsAccount.prototype.constructor = SavingsAccount;
+
+      // prototype 上寫一個 addInterest 加利息 方法
+      // 利息 = (利率 * 餘額) / 100
+      // 再把利息加上餘額
+      // console.log(`存款利息 ..., 餘額: ...。`);
+
+      const mySavingsAccount = new SavingsAccount('001', 'Allie', 1000, 2);
     </script>
   </body>
 </html>
