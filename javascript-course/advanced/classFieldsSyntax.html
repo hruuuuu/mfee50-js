@@ -6,6 +6,52 @@
     <title>類別字段語法 Class Fields Syntax</title>
   </head>
   <body>
-    <script></script>
+    <script>
+      class Person {
+        #secret = '這是一個秘密';
+        notSecret = '這不是一個秘密';
+        static staticSectet = '靜態';
+        static #staticPrivateSecret = '靜態且私有';
+        constructor(name, age) {
+          this._name = name;
+          this._age = age;
+        }
+        getSecret() {
+          return this.#secret;
+        }
+        setSectet(newSecret) {
+          this.#secret = newSecret;
+        }
+        getStaticPrivateSecret() {
+          return Person.#staticPrivateSecret;
+        }
+      }
+      const allie = new Person('Allie', 18);
+      console.log(allie._name);
+      console.log(allie.secret); // undefined
+      console.log(allie.notSecret);
+      console.log(allie.staticPrivateSecret); // undefined
+      console.log(allie.staticSectet); // undefined
+      console.log(Person.staticSectet); // 靜態
+      console.log(Person.staticPrivateSecret); // undefined
+      console.log(allie.getSecret()); // 這是一個秘密
+      allie.setSectet('新秘密');
+      console.log(allie.getSecret()); // 新秘密
+      console.log(allie.getStaticPrivateSecret()); // 靜態且私有
+
+      class Student extends Person {
+        _school;
+        constructor(name, age, school) {
+          super(name, age);
+          this._school = school;
+        }
+        shareSecret() {
+          console.log(`${this._name} 說秘密是: ${this.getSecret()}`);
+        }
+      }
+
+      const tom = new Student('Tom', 30, '資展');
+      tom.shareSecret();
+    </script>
   </body>
 </html>
