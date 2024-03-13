@@ -7,6 +7,7 @@
   </head>
   <body>
     <script>
+      /*
       class Person {
         color = 'white';
         constructor(data) {
@@ -23,16 +24,56 @@
           console.log(person.age);
           // console.log(this.age); // undefined
         }
+        static changeAge(newAge) {
+          this.age = newAge;
+        }
+        static changeAge(person, newAge) {
+          person.age = newAge;
+        }
+        get birthdayAge() {
+          return this.age + 1;
+        }
+        set birthdayAge(newAge) {
+          this.age = newAge;
+        }
       }
 
       const allie = new Person({name: 'Allie', age: 18, pet: 'dog'});
-      /*
+
       console.log(allie.color);
       console.log(allie.pet);
       allie.introduce();
-      */
+
       // allie.printAge(); (x)
+
       Person.printAge(allie);
+
+      const birthday = Person.changeAge.bind(allie, 19);
+      birthday();
+      console.log(allie.age);
+
+      Person.changeAge(allie, 19);
+      console.log(allie.age);
+
+      console.log(allie.birthdayAge);
+      allie.birthdayAge = 28;
+      console.log(allie.age);
+      */
+
+      class Person {
+        color = 'white';
+        constructor(data) {
+          this._name = data.name;
+          this._age = data.age;
+          this._color = 'blue';
+          this._pet = data.pet;
+        }
+        introduce() {
+          console.log(`這是 ${this._name}, 年齡 ${this._age} 歲`);
+        }
+      }
+
+      const allie = new Person({name: 'Allie', age: 18, pet: 'dog'});
     </script>
   </body>
 </html>
