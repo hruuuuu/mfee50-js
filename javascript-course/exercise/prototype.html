@@ -37,7 +37,7 @@
           console.log(`餘額不足, 提款失敗。`);
         } else {
           this.balance -= amount;
-          console.log(`金額 ${amount} 提款成功, 餘額: ${this.balance}。`);
+          console.log(`金額 ${amount} 扣款成功, 餘額: ${this.balance}。`);
         }
       };
 
@@ -79,6 +79,38 @@
 
       const mySavingsAccount = new SavingsAccount('001', 'Allie', 1000, 2);
       mySavingsAccount.addInterest();
+
+      // freeTransactions 免費轉帳次數
+      // transactionCount 轉帳次數
+      function CheckingAccount(accountNumber, ownerName, balance, freeTransactions) {
+        Account.call(this, accountNumber, ownerName, balance);
+        this.freeTransactions = freeTransactions;
+        this.transactionCount = 0;
+      }
+
+      CheckingAccount.prototype = Object.create(Account.prototype);
+      CheckingAccount.prototype.constructor = CheckingAccount;
+
+      // 改寫 Account 方法
+      // 手續費 10
+      CheckingAccount.prototype.withdraw = function (amount) {
+        Account.prototype.withdraw.call(this, amount); // 扣轉帳款
+        this.transactionCount++; // 轉帳次數 +1
+        if (this.transactionCount > this.freeTransactions) {
+          console.log(`扣除交易手續費。`);
+          Account.prototype.withdraw.call(this, 10); // 扣手續費
+        }
+      };
+
+      CheckingAccount.prototype.resetTransactionCount = function () {
+        this.transactionCount = 0;
+      };
+
+      const myCheckingAccount = new CheckingAccount('001', 'Allie', 1000, 1);
+
+      myCheckingAccount.withdraw(200);
+      myCheckingAccount.withdraw(200);
+      console.log(myCheckingAccount.getBalance());
     </script>
   </body>
 </html>
