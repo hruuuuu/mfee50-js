@@ -15,6 +15,7 @@
         constructor(name, age) {
           this._name = name;
           this._age = age;
+          console.log(this);
         }
         getSecret() {
           return this.#secret;
@@ -52,6 +53,27 @@
 
       const tom = new Student('Tom', 30, '資展');
       tom.shareSecret();
+
+      // typeof
+      // instanceof 測試物件是否為構造函數的實例
+      // 物件 instanceof 構造函數
+      console.log(allie instanceof Person); // true
+      console.log(tom instanceof Student); // true
+      console.log(tom instanceof Person); // true
+      console.log(Student instanceof Person); // false
+      console.log(Student.prototype instanceof Person); // true
+
+      const greeting = 'Hello world'; // string 基礎型別
+      console.log(greeting.includes('o'));
+
+      const greetingObj = new String('Hello world'); // 物件
+      const greetingMethod = String('Hello world'); // 方法
+
+      console.log(greeting instanceof String); // false
+      console.log(greetingObj instanceof String); // true
+      console.log(greetingMethod instanceof String); // false
+
+      // auto boxing 對基礎型別使用方法時, js 會自動幫我們包成物件, 執行完之後, js 會把物件拆掉變回基礎型別
     </script>
   </body>
 </html>
