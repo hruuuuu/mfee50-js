@@ -126,10 +126,11 @@
       }
     </style>
   </head>
+
   <body>
-    <form id="form">
+    <form>
       <div id="container" class="container"></div>
-      <button type="submit">修改完畢，送出</button>
+      <button type="submit">提交</button>
     </form>
     <script>
       let farm = [
@@ -174,6 +175,104 @@
           isLarge: false,
         },
       ];
+
+      const containerEl = document.querySelector('#container');
+      let farmHtml = ``;
+
+      farm.forEach((animal, i, arr) => {
+        farmHtml += `
+        <div class="set">
+          <button type="button" class="btn">${animal.name}</button>
+          <div class="content">
+            <ul>
+              <li><span>動物:</span>${animal.name}</li>
+              <li><span>英文名稱:</span>${animal.en}</li>
+            </ul>
+            <div class="info">
+              <hr class="divider" />
+              <ul>
+                <li><span>編號:</span>${animal.id}</li>
+                <li><span>是否為大型動物:</span>${animal.isLarge ? '是' : '否'}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="btns">
+            <button type="button" class="countBtn decreaseBtn">-</button>
+            <input type="number" value="${animal.male + animal.female}" readonly name="${animal.en}">
+            <button type="button" class="countBtn increaseBtn">+</button>
+          </div>
+        </div>
+        `;
+      });
+      containerEl.innerHTML = farmHtml;
+
+      const btnEls = document.querySelectorAll('.btn');
+      const contentEls = document.querySelectorAll('.content');
+      let activeEl = null;
+      btnEls.forEach((v, i, arr) => {
+        v.addEventListener('mouseover', (event) => {
+          /*
+          contentEls.forEach((contentEl) => {
+            contentEl.classList.remove('active');
+          });
+          */
+          // console.log(event.target.nextElementSibling);
+          if (activeEl) {
+            activeEl.classList.remove('active');
+          }
+          activeEl = event.target.nextElementSibling;
+          activeEl.classList.add('active');
+        });
+        v.addEventListener('mouseout', (event) => {
+          if (activeEl) {
+            activeEl.classList.remove('active');
+            activeEl = null;
+          }
+          // event.target.nextElementSibling.classList.remove('active');
+        });
+        v.addEventListener('click', (event) => {
+          event.target.nextElementSibling.lastElementChild.classList.toggle('active');
+        });
+      });
+
+      const decreaseBtnEls = document.querySelectorAll('.decreaseBtn');
+      decreaseBtnEls.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          const input = e.target.nextElementSibling;
+          let num = Number(input.value);
+          num -= 1;
+          if (num < 0) {
+            btn.disabled = true;
+          } else {
+            btn.disabled = false;
+          }
+          // text.textContent = Math.max(num, 0);
+          input.value = Math.max(num, 0);
+        });
+      });
+
+      const increaseBtnEls = document.querySelectorAll('.increaseBtn');
+      increaseBtnEls.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          const input = e.target.previousElementSibling;
+          let num = Number(input.value);
+          num += 1;
+          input.value = num;
+          if (num < 0) {
+            input.previousElementSibling.disabled = true;
+          } else {
+            input.previousElementSibling.disabled = false;
+          }
+        });
+      });
+
+      document.querySelector('form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        for (let [key, value] of formData.entries()) {
+          console.log(key, value);
+        }
+      });
     </script>
   </body>
 </html>
